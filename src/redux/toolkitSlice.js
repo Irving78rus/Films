@@ -8,15 +8,11 @@ import {
   getFilmByFilters,
 } from "../api/api";
 
-// const obj= [
-//     {id:4},
-//     {id:1},
-// ]
-// console.log(obj.map(item=>{ids:item.id}));
+ 
 
 export const setTop250 = createAsyncThunk("toolkit/setTop250", async (numberPage) => {
   const response = await getTop250(numberPage);
-   console.log(response);
+   
 
   const arr = [];
   response.films.map((item, index) => {

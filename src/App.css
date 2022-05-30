@@ -239,7 +239,13 @@ background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(15, 15, 15, 0.815) 150%)
   height: 40px;
   background-color: grey;
   margin: 3px;
+   
+}
+.paginationItem_active{
   
+  background-color:  #a0a0a0 
+ 
+ 
 }
  .paginationWrapper{
    display: flex;

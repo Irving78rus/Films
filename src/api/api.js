@@ -17,7 +17,7 @@ import axios from "axios";
 //   baseURL: "https://kinopoiskapiunofficial.tech/",
 // });
 export const getTop250 = (numberPage=5) => {
-  console.log(numberPage);
+  
   return instance
     .get(`api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${numberPage}`)
     .then((response) => response.data);
