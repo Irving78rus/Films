@@ -24,6 +24,10 @@ function InfoAboutFilm() {
                     <button onClick={addSelectedFilm}>add избраное</button>
                 </div>
                 <div className="InfoAboutFilmCenter" >
+                    {/* {копипаста!!!!} */}
+                    {/* {копипаста!!!!} */}
+                    {/* {копипаста!!!!} */}
+                    {/* {копипаста!!!!} */}
                     <div className="InfoAboutFilmCenterNameRu"> {filmById.nameRu}  ({filmById.year})</div>
                     <div className="InfoAboutFilmCenterNameOriginal"> {filmById.nameOriginal} {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</div>
                     <div className="InfoAboutFilmCenterShortDescription" >Описание {filmById.shortDescription}</div>

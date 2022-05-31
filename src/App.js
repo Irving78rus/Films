@@ -12,7 +12,7 @@ import {setTop250,setPremieres,setFilmById} from './redux/toolkitSlice'
 function App() {
   const indicators = [
     {
-      title: "Фильмы",
+      title: "Подборки",
       link: "Films",
       id: 1,
     },
@@ -32,10 +32,10 @@ function App() {
       id: 4,
     },
   ];
-  const top250 = useSelector((state) => state.toolkitSlice.top250 );
-  const awaitFilms = useSelector((state) => state.toolkitSlice.awaitFilms );
+  const categoryTop250 = useSelector((state) => state.toolkitSlice.top250 );
+  const categoryAwaitFilms = useSelector((state) => state.toolkitSlice.awaitFilms );
   const selectedFilms = useSelector((state) => state.toolkitSlice.selectedFilm );
-  
+  console.log(  selectedFilms  );
   
   return (
     <div className="App">
@@ -54,8 +54,8 @@ function App() {
         <Route path="Search" element={<Search />} />
         <Route path="Serials" element={<Serials />} />
         <Route path="Selected" element={<CategoryFilms setFilms={setFilmById} listFilms={selectedFilms} />} />
-        <Route path="Films/Top250" element={<CategoryFilms setFilms={setTop250} listFilms={top250} />} />
-        <Route path="Films/Premiries" element={<CategoryFilms setFilms={setPremieres} listFilms={awaitFilms}/>} />
+        <Route path="Films/Top250" element={<CategoryFilms setFilms={setTop250} listFilms={categoryTop250} />} />
+        <Route path="Films/Premiries" element={<CategoryFilms setFilms={setPremieres} listFilms={categoryAwaitFilms}/>} />
         
         <Route path="Films/:id" element={<InfoAboutFilm />} />
         

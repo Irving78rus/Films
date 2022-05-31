@@ -2,14 +2,23 @@
 import "../App.css";
 import React,{useState,useEffect} from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setSelectedFilm } from '../redux/toolkitSlice'
+import { useDispatch,useSelector } from "react-redux";
+import { setSelectedFilm ,deleteSelectedFilm} from '../redux/toolkitSlice'
 
 
 function MoveCard({ listFilms }) {
     const dispatch = useDispatch();
+     
+    const selectedFilms = useSelector((state) => state.toolkitSlice.selectedFilm.items );
+    
     const addSelectedFilm = (e, film) => {
+         
         dispatch(setSelectedFilm(film))
+        e.preventDefault()
+    }
+    const addDeleteSelectedFilm = (e, film) => {
+        e.preventDefault()
+        dispatch(deleteSelectedFilm(film))
         e.preventDefault()
     }
     
@@ -37,6 +46,10 @@ function MoveCard({ listFilms }) {
             </div>
             <div>
                 <button onClick={(e) => { addSelectedFilm(e, film) }}> Добавить в избранное </button>
+               {console.log(selectedFilms,film) }
+               {/* //взять каждый элемент массива селект и посомтреть есть ли там айди текущего фильма */}
+                 { selectedFilms.includes(film)&& <button onClick={(e) => { addDeleteSelectedFilm(e, film) }}>Удалить из   избранного </button>  }
+                  {}  
             </div>
         </NavLink>
         )}
@@ -45,4 +58,4 @@ function MoveCard({ listFilms }) {
     )
 }
 
-export default MoveCard
+export default React.memo(MoveCard)

@@ -12,9 +12,10 @@ import {
 
 export const setTop250 = createAsyncThunk("toolkit/setTop250", async (data) => {
    
+  
   const response = await getTop250(data);
   
-
+ 
   const arr = [];
   response.films.map((item, index) => {
     let clone = {};
@@ -28,15 +29,15 @@ export const setTop250 = createAsyncThunk("toolkit/setTop250", async (data) => {
     arr.push(clone);
   });
   const myResponse = {
-    total: response.pagesCount,
+    totalPages: response.pagesCount,
     items: arr
   }
   return myResponse;
 });
 export const setPremieres = createAsyncThunk(
   "toolkit/setPremieres",
-  async (numberPage) => {
-    const response = await getPremieres(numberPage);
+  async (data) => {
+    const response = await getPremieres(data);
 
     return response;
   }
@@ -77,7 +78,7 @@ export const setFilmByFilters = createAsyncThunk(
       arr.push(clone)
     })
     const myResponse = {
-      total: response.totalPages,
+      totalPages: response.totalPages,
       items: arr
     }
     return myResponse;
@@ -104,16 +105,22 @@ const toolkitSlice = createSlice({
     queryFilms:{}
   },
   reducers: {
-    setSelectedFilm(state, id) {
+    setSelectedFilm(state, film) {
       if (
         state.selectedFilm.items.every(
-          (item) => item.kinopoiskId !== id.payload.kinopoiskId
+          (item) => item.kinopoiskId !== film.payload.kinopoiskId
         )
       ) {
-        state.selectedFilm.items.push(id.payload);
+        state.selectedFilm.items.push(film.payload);
         //  state.selectedFilm.total++
       }
+      
     },
+    deleteSelectedFilm(state, film) {
+      console.log(123);
+      state.selectedFilm.items=state.selectedFilm.items.filter(item=>item.kinopoiskId !== film.payload.kinopoiskId)
+    },
+
     setQueryFilms(state,query){
       state.queryFilms=query.payload
        
@@ -139,8 +146,7 @@ const toolkitSlice = createSlice({
       state.countriesGenres = action.payload;
     });
     builder.addCase(setFilmByFilters.pending, (state, action) => {
-    
-      state.isPreloader = true
+     state.isPreloader = true
     });
     builder.addCase(setFilmByFilters.fulfilled, (state, action) => {
       state.isPreloader = false
@@ -149,6 +155,6 @@ const toolkitSlice = createSlice({
   },
 });
 
-export const { setSelectedFilm,setQueryFilms } = toolkitSlice.actions;
+export const { setSelectedFilm,setQueryFilms,deleteSelectedFilm } = toolkitSlice.actions;
 export default toolkitSlice.reducer;
  
