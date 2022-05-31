@@ -13,7 +13,7 @@ function Search() {
     return (
         <div className="mainWrapper">
             Search
-            <Form />
+            <Form  />
             {isLoad && <Preloader />}
             {FilmByFilters && <CategoryFilms setFilms={setFilmByFilters} listFilms={FilmByFilters} />}
         </div>

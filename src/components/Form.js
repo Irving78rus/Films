@@ -1,9 +1,9 @@
  
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCountriesGenres, setFilmByFilters } from '../redux/toolkitSlice'
+import { setCountriesGenres,setQueryFilms,setFilmByFilters } from '../redux/toolkitSlice'
 import { ratingTest, yearTest, keywordTest } from '../utils/validation'
-const Form = () => {
+const Form = ( ) => {
     const [country, setCountry] = useState('1')
     const [genre, setGenre] = useState('13')
     const [typeFilm, setTypeFilm] = useState('FILM')
@@ -14,13 +14,14 @@ const Form = () => {
     const [keyword, setKeyword] = useState('')
     const [FormValid, setFormValid] = useState(true);
     const [error, setError] = useState('error')
+  
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setCountriesGenres());
 
     }, [])
     const countriesGenres = useSelector(state => state.toolkitSlice.countriesGenres)
-
+ 
     const handleSubmit = (e) => {
         e.preventDefault();
         const query = {
@@ -33,9 +34,12 @@ const Form = () => {
             yearTo,
             keyword
         }
+       
+       
 
         if (ratingTest(minRating) && ratingTest(maxRating) && yearTest(yearFrom) && yearTest(yearTo) && keywordTest(keyword)) {
-            dispatch(setFilmByFilters(query))
+            dispatch(setQueryFilms(query))
+            dispatch(setFilmByFilters({query,numberPage:1}))
         }
         else {
             setFormValid(false)

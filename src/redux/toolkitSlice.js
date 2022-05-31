@@ -1,5 +1,5 @@
  
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk,current } from "@reduxjs/toolkit";
 import {
   getTop250,
   getPremieres,
@@ -7,12 +7,13 @@ import {
   getCountriesGenres,
   getFilmByFilters,
 } from "../api/api";
-
+ 
  
 
-export const setTop250 = createAsyncThunk("toolkit/setTop250", async (numberPage) => {
-  const response = await getTop250(numberPage);
+export const setTop250 = createAsyncThunk("toolkit/setTop250", async (data) => {
    
+  const response = await getTop250(data);
+  
 
   const arr = [];
   response.films.map((item, index) => {
@@ -59,9 +60,10 @@ export const setCountriesGenres = createAsyncThunk(
 );
 export const setFilmByFilters = createAsyncThunk(
   "toolkit/setFilmByFilters",
-  async (query) => {
-    const response = await getFilmByFilters(query);
+  async (data) => {
     
+    const response = await getFilmByFilters(data);
+   
     const arr = [];
     response.items.map((item, index) => {
       let clone = {};
@@ -98,7 +100,8 @@ const toolkitSlice = createSlice({
     filmById: {},
     countriesGenres: {},
     FilmByFilters: [],
-    isPreloader: false
+    isPreloader: false,
+    queryFilms:{}
   },
   reducers: {
     setSelectedFilm(state, id) {
@@ -111,6 +114,11 @@ const toolkitSlice = createSlice({
         //  state.selectedFilm.total++
       }
     },
+    setQueryFilms(state,query){
+      state.queryFilms=query.payload
+       
+    }
+
   },
 
   extraReducers: (builder) => {
@@ -131,7 +139,7 @@ const toolkitSlice = createSlice({
       state.countriesGenres = action.payload;
     });
     builder.addCase(setFilmByFilters.pending, (state, action) => {
-      console.log('запуск');
+    
       state.isPreloader = true
     });
     builder.addCase(setFilmByFilters.fulfilled, (state, action) => {
@@ -141,6 +149,6 @@ const toolkitSlice = createSlice({
   },
 });
 
-export const { setSelectedFilm } = toolkitSlice.actions;
+export const { setSelectedFilm,setQueryFilms } = toolkitSlice.actions;
 export default toolkitSlice.reducer;
  
