@@ -22,3 +22,23 @@ export const createNumbersForCell = (count) => {
     rightPortionPageNumber
   }
  } 
+
+export const renameResponse=(response, responseItems,oldName,newName)=>{
+  const arr = [];
+  responseItems.map((item ) => {
+    let clone = {};
+    for (let key in item) {
+      if (key === oldName) {
+        clone[newName] = item[key];
+      } else {
+        clone[key] = item[key];
+      }
+    }
+    arr.push(clone);
+  });
+  const myResponse = {
+    totalPages: response.pagesCount,
+    items: arr
+  }
+  return myResponse;
+ }

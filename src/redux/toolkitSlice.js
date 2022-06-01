@@ -7,32 +7,35 @@ import {
   getCountriesGenres,
   getFilmByFilters,
 } from "../api/api";
- 
+ import {renameResponse} from '../utils/logic'
  
 
 export const setTop250 = createAsyncThunk("toolkit/setTop250", async (data) => {
    
   
   const response = await getTop250(data);
-  
  
-  const arr = [];
-  response.films.map((item, index) => {
-    let clone = {};
-    for (let key in item) {
-      if (key === "filmId") {
-        clone["kinopoiskId"] = item[key];
-      } else {
-        clone[key] = item[key];
-      }
-    }
-    arr.push(clone);
-  });
-  const myResponse = {
-    totalPages: response.pagesCount,
-    items: arr
-  }
-  return myResponse;
+  
+
+
+  // const arr = [];
+  // response.films.map((item, index) => {
+  //   let clone = {};
+  //   for (let key in item) {
+  //     if (key === "filmId") {
+  //       clone["kinopoiskId"] = item[key];
+  //     } else {
+  //       clone[key] = item[key];
+  //     }
+  //   }
+  //   arr.push(clone);
+  // });
+  // const myResponse = {
+  //   totalPages: response.pagesCount,
+  //   items: arr
+  // }
+  // return myResponse;
+  return  renameResponse(response,response.films,"filmId","kinopoiskId")
 });
 export const setPremieres = createAsyncThunk(
   "toolkit/setPremieres",
@@ -64,24 +67,8 @@ export const setFilmByFilters = createAsyncThunk(
   async (data) => {
     
     const response = await getFilmByFilters(data);
-   
-    const arr = [];
-    response.items.map((item, index) => {
-      let clone = {};
-      for (let key in item) {
-        if (key === "ratingKinopoisk") {
-          clone["rating"] = item[key];
-        } else {
-          clone[key] = item[key];
-        }
-      }
-      arr.push(clone)
-    })
-    const myResponse = {
-      totalPages: response.totalPages,
-      items: arr
-    }
-    return myResponse;
+    return  renameResponse(response,response.items,"ratingKinopoisk","rating")
+    
   }
 
 );
