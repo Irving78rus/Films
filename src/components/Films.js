@@ -18,7 +18,7 @@ function Films() {
     },
   ];
   return (
-    <div className="mainWrapper">
+    <div className="wrapper">
       {categories.map((category) => (
         <NavLink key={category.id} to={category.link} className="mainCard">
           <img src={category.img} alt="" />

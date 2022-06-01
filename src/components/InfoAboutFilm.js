@@ -15,12 +15,12 @@ function InfoAboutFilm() {
         dispatch(setSelectedFilm(filmById))
     }
 
-    return (<div className="top250Wrapper" >
+    return (<div className="wrapper" >
 
         {filmById.year && <div className="InfoAboutFilm" style={{ backgroundImage: `url(${filmById.coverUrl})` }} >
             <div className="InfoAboutFilmFon"  >
                 <div className="InfoAboutFilmLeft" >
-                    <img src={filmById.posterUrlPreview} />
+                    <img src={filmById.posterUrlPreview} alt='poster'/>
                     
                 </div>
                 <div className="InfoAboutFilmCenter" >
@@ -29,15 +29,15 @@ function InfoAboutFilm() {
                     {/* {копипаста!!!!} */}
                     {/* {копипаста!!!!} */}
                     <div className="InfoAboutFilmCenterNameRu"> {filmById.nameRu}  ({filmById.year})</div>
-                    <div className="InfoAboutFilmCenterNameOriginal"> {filmById.nameOriginal} {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</div>
+                    <div className="description"> {filmById.nameOriginal} {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</div>
                     <div className="InfoAboutFilmCenterShortDescription" >Описание {filmById.shortDescription}</div>
-                    <div className="InfoAboutFilmCenterNameOriginal">продолжительность<span className="InfoAboutFilmSpan" >{filmById.filmLength} мин</span></div>
+                    <div className="description">продолжительность<span className="descriptionValue" >{filmById.filmLength} мин</span></div>
+                    <div className="description"> Возраст <span className="descriptionValue"> {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</span></div>
+                    <div className="description">Год производства<span className="descriptionValue" > {filmById.year}</span></div>
+                    <div className="description">Страна<span className="descriptionValue" > {filmById?.countries[0].country}</span></div>
+                    <div className="description">Жанр <span className="descriptionValue" > {filmById.genres.map((genre, index) => <span key={index}>{genre.genre + `, `}</span>)}</span></div>
+                    <div className="description">Слоган<span className="descriptionValue" >{filmById.slogan}</span></div>
                     <button onClick={addSelectedFilm}>Добавить в избранное</button>
-                    <div className="InfoAboutFilmCenterNameOriginal"> Возрасть <span className="InfoAboutFilmSpan"> {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</span></div>
-                    <div className="InfoAboutFilmCenterNameOriginal">год производства<span className="InfoAboutFilmSpan" > {filmById.year}</span></div>
-                    <div className="InfoAboutFilmCenterNameOriginal">Страна<span className="InfoAboutFilmSpan" > {filmById?.countries[0].country}</span></div>
-                    <div className="InfoAboutFilmCenterNameOriginal">Жанр <span className="InfoAboutFilmSpan" > {filmById.genres.map((genre, index) => <span key={index}>{genre.genre + `, `}</span>)}</span></div>
-                    <div className="InfoAboutFilmCenterNameOriginal">Слоган<span className="InfoAboutFilmSpan" >{filmById.slogan}</span></div>
                 </div>
                 <div className="InfoAboutFilmRight" > </div>
             </div>

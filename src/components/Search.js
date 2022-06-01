@@ -11,7 +11,7 @@ function Search() {
     const isLoad = useSelector((state) => state.toolkitSlice.isPreloader);
 
     return (
-        <div className="mainWrapper">
+        <div className="wrapper">
             Search
             <Form  />
             {isLoad && <Preloader />}

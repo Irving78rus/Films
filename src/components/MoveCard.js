@@ -1,32 +1,27 @@
 
 import "../App.css";
-import React,{useState,useEffect} from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import { setSelectedFilm ,deleteSelectedFilm} from '../redux/toolkitSlice'
-
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedFilm, deleteSelectedFilm } from '../redux/toolkitSlice'
 
 function MoveCard({ listFilms }) {
     const dispatch = useDispatch();
-     
-    const selectedFilms = useSelector((state) => state.toolkitSlice.selectedFilm.items );
-    
+    const selectedFilms = useSelector((state) => state.toolkitSlice.selectedFilm.items);
     const addSelectedFilm = (e, film) => {
-         
         dispatch(setSelectedFilm(film))
         e.preventDefault()
     }
     const addDeleteSelectedFilm = (e, film) => {
         e.preventDefault()
         dispatch(deleteSelectedFilm(film))
-        e.preventDefault()
     }
-    
-     
-     
-      
-    return (<div className="top250Wrapper">
-        
+
+
+
+
+    return (<div className="wrapper">
+
         {listFilms.items?.map((film, index) => <NavLink to={`/Films/${film.kinopoiskId}`} key={index}
             className={index === 0 ? " bc" : "filmList"}>
             <div>  {index + 1}</div>
@@ -45,17 +40,12 @@ function MoveCard({ listFilms }) {
                 <div className="ratingVoteCount">{film.ratingVoteCount}</div>
             </div>
             <div>
-            
-            {/* { selectedFilms.map(item=>item.kinopoiskId !==film.kinopoiskId&&<button onClick={(e) => { addSelectedFilm(e, film) }}>Добавить в избранное </button> )}   */}
-                  <button onClick={(e) => { addSelectedFilm(e, film) }}> Добавить в избранное </button>  
-          
-               {/* //взять каждый элемент массива селект и посомтреть есть ли там айди текущего фильма */}
-                 
-                  {selectedFilms.map(item=>item.kinopoiskId===film.kinopoiskId&&<button key={item.kinopoiskId} onClick={(e) => { addDeleteSelectedFilm(e, film) }}>Удалить из   избранного </button> )}  
+                <button onClick={(e) => { addSelectedFilm(e, film) }}> Добавить в избранное </button>
+                {selectedFilms.map(item => item.kinopoiskId === film.kinopoiskId && <button key={item.kinopoiskId} onClick={(e) => { addDeleteSelectedFilm(e, film) }}>Удалить из   избранного </button>)}
             </div>
         </NavLink>
         )}
-      
+
     </div>
     )
 }

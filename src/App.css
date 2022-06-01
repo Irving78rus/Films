@@ -76,8 +76,7 @@ select,input{
  
 
 }
-.top250Wrapper{
-  
+.wrapper{
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -218,7 +217,7 @@ background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(15, 15, 15, 0.815) 150%)
   letter-spacing: -.5px;
   color: #fff;
 }
-.InfoAboutFilmCenterNameOriginal{
+.description{
   margin-right: 9px;
     font-size: 18px;
     vertical-align: middle;
@@ -230,7 +229,7 @@ background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(15, 15, 15, 0.815) 150%)
   line-height: 24px;
   color: #fff;
 }
-.InfoAboutFilmSpan{
+.descriptionValue{
   color: #fff;
 }
  .InfoAboutFilmRight{

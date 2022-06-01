@@ -1,19 +1,24 @@
+//Иммитация импорта конфига
+const portionSizePagination =5
+//Иммитация импорта конфига
+
+
 export const createNumbersForCell = (count) => {
-    return [...Array(count).keys()];
+    return [...Array(count).keys()].map(item=>item+1);
   };
 
 
  export const paginationHelper =(pagesCount,portionNumber)=>{
-   const portionSize =5
+   
   let portionCount
   let leftPortionPageNumber
   let rightPortionPageNumber
  
   if(pagesCount){
    
-    portionCount = Math.ceil(pagesCount.length/portionSize)
-    leftPortionPageNumber = (portionNumber-1)*portionSize
-    rightPortionPageNumber =  portionNumber * portionSize 
+    portionCount = Math.ceil(pagesCount.length/portionSizePagination)
+    leftPortionPageNumber = (portionNumber-1)*portionSizePagination
+    rightPortionPageNumber =  portionNumber * portionSizePagination 
   }
  
   return {
@@ -25,7 +30,7 @@ export const createNumbersForCell = (count) => {
 
 export const renameResponse=(response, responseItems,oldName,newName)=>{
   const arr = [];
-  responseItems.map((item ) => {
+  responseItems.forEach((item ) => {
     let clone = {};
     for (let key in item) {
       if (key === oldName) {
@@ -33,6 +38,7 @@ export const renameResponse=(response, responseItems,oldName,newName)=>{
       } else {
         clone[key] = item[key];
       }
+
     }
     arr.push(clone);
   });
