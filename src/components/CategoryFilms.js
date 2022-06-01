@@ -15,8 +15,7 @@ function CategoryFilms({ listFilms, setFilms }) {
     if(setFilms){
       dispatch(setFilms({ query, numberPage: 1 }));
     }
-   //400 ошибка при переходе в компоненту "поиск", на работу приложения не влияет
-  }, []);
+   }, []);
 
    const getFilmsByPagesCount = (numberPage) => {
     const data = { query, numberPage }

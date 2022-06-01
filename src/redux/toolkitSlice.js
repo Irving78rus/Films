@@ -36,12 +36,21 @@ export const setCountriesGenres = createAsyncThunk(
 );
 export const setFilmByFilters = createAsyncThunk(
   "toolkit/setFilmByFilters",
-  async (data) => {
-    const response = await getFilmByFilters(data);
-    return renameResponse(response, response.items, "ratingKinopoisk", "rating")
+  async (data, { rejectWithValue }) => {
+      try {
+      const response = await getFilmByFilters(data);
+      if (!response) {
+        throw new Error('Server Error')
+      }
+      return renameResponse(response, response.items, "ratingKinopoisk", "rating")
+
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+ 
   }
 );
- 
+
 
 const toolkitSlice = createSlice({
   name: "toolkit",
@@ -56,7 +65,17 @@ const toolkitSlice = createSlice({
     countriesGenres: {},
     FilmByFilters: [],
     isPreloader: false,
-    queryFilms: {},
+    queryFilms: {
+      countries: '',
+      genres: '',
+      type: '',
+      ratingFrom: '',
+      ratingTo: '',
+      yearFrom:'',
+      yearTo:'',
+      keyword:''
+  },
+    error: null
   },
   reducers: {
     setSelectedFilm(state, film) {
@@ -102,6 +121,11 @@ const toolkitSlice = createSlice({
     builder.addCase(setFilmByFilters.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.FilmByFilters = action.payload;
+      state.error = null;
+    });
+    builder.addCase(setFilmByFilters.rejected, (state, action) => {
+      state.isPreloader = false;
+      state.error = action.payload;
     });
   },
 });

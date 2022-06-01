@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCountriesGenres,setQueryFilms,setFilmByFilters } from '../redux/toolkitSlice'
 import { ratingTest, yearTest, keywordTest } from '../utils/validation'
 const Form = ( ) => {
+   
     const [country, setCountry] = useState('')
     const [genre, setGenre] = useState('')
     const [typeFilm, setTypeFilm] = useState('')
@@ -13,15 +14,15 @@ const Form = ( ) => {
     const [yearTo, setYearTo] = useState('')
     const [keyword, setKeyword] = useState('')
     const [FormValid, setFormValid] = useState(true);
-    const [error, setError] = useState('error')
-  
+     
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setCountriesGenres());
 
     }, [])
     const countriesGenres = useSelector(state => state.toolkitSlice.countriesGenres)
- 
+    const error = useSelector(state => state.toolkitSlice.error)
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const query = {
@@ -34,9 +35,7 @@ const Form = ( ) => {
             yearTo,
             keyword
         }
-       
-       
-
+    
         if (ratingTest(minRating) && ratingTest(maxRating) && yearTest(yearFrom) && yearTest(yearTo) && keywordTest(keyword)) {
             dispatch(setQueryFilms(query))
             dispatch(setFilmByFilters({query,numberPage:1}))
@@ -47,6 +46,7 @@ const Form = ( ) => {
     };
 
     return (<>
+       
         <form onSubmit={(e) => handleSubmit(e)} className='form'>
             <label className='m5'>
                 Страна
@@ -85,10 +85,11 @@ const Form = ( ) => {
             <input className='m5' type="text" placeholder="Ключевое слово" value={keyword} onChange={(e) => { setKeyword(e.target.value) }} />
 
             <button className='m5' >Поиск</button>
-            {!FormValid && error}
+            {!FormValid && "Не валидная форма"}
 
 
         </form>
+        {error&&<h1>{error}</h1>}
         {/* {FormValid && <Navigate to="/More" replace={true} />} */}
     </>
 
