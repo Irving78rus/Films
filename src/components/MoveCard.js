@@ -45,11 +45,13 @@ function MoveCard({ listFilms }) {
                 <div className="ratingVoteCount">{film.ratingVoteCount}</div>
             </div>
             <div>
-                <button onClick={(e) => { addSelectedFilm(e, film) }}> Добавить в избранное </button>
-               {console.log(selectedFilms,film) }
+            
+            {/* { selectedFilms.map(item=>item.kinopoiskId !==film.kinopoiskId&&<button onClick={(e) => { addSelectedFilm(e, film) }}>Добавить в избранное </button> )}   */}
+                  <button onClick={(e) => { addSelectedFilm(e, film) }}> Добавить в избранное </button>  
+          
                {/* //взять каждый элемент массива селект и посомтреть есть ли там айди текущего фильма */}
-                 { selectedFilms.includes(film)&& <button onClick={(e) => { addDeleteSelectedFilm(e, film) }}>Удалить из   избранного </button>  }
-                  {}  
+                 
+                  {selectedFilms.map(item=>item.kinopoiskId===film.kinopoiskId&&<button key={item.kinopoiskId} onClick={(e) => { addDeleteSelectedFilm(e, film) }}>Удалить из   избранного </button> )}  
             </div>
         </NavLink>
         )}

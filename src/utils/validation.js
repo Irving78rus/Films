@@ -1,6 +1,6 @@
 
 export function ratingTest(rating) {
-   if((rating<=10&&rating>=0)||typeof(year)==="undefined"){
+   if((rating<=10&&rating>=0)||(rating)===""){
      return true
    }
    else return false

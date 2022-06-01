@@ -21,7 +21,7 @@ function InfoAboutFilm() {
             <div className="InfoAboutFilmFon"  >
                 <div className="InfoAboutFilmLeft" >
                     <img src={filmById.posterUrlPreview} />
-                    <button onClick={addSelectedFilm}>add избраное</button>
+                    
                 </div>
                 <div className="InfoAboutFilmCenter" >
                     {/* {копипаста!!!!} */}
@@ -32,7 +32,7 @@ function InfoAboutFilm() {
                     <div className="InfoAboutFilmCenterNameOriginal"> {filmById.nameOriginal} {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</div>
                     <div className="InfoAboutFilmCenterShortDescription" >Описание {filmById.shortDescription}</div>
                     <div className="InfoAboutFilmCenterNameOriginal">продолжительность<span className="InfoAboutFilmSpan" >{filmById.filmLength} мин</span></div>
-                    <button onClick={addSelectedFilm}>add избраное</button>
+                    <button onClick={addSelectedFilm}>Добавить в избранное</button>
                     <div className="InfoAboutFilmCenterNameOriginal"> Возрасть <span className="InfoAboutFilmSpan"> {filmById.ratingAgeLimits && filmById.ratingAgeLimits.replace(/[^0-9]/g, "")}+</span></div>
                     <div className="InfoAboutFilmCenterNameOriginal">год производства<span className="InfoAboutFilmSpan" > {filmById.year}</span></div>
                     <div className="InfoAboutFilmCenterNameOriginal">Страна<span className="InfoAboutFilmSpan" > {filmById?.countries[0].country}</span></div>

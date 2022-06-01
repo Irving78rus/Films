@@ -21,12 +21,7 @@ function App() {
       link: "Search",
       id: 2,
     },
-    {
-      title: "Сериалы",
-      link: "Serials",
-      id: 3,
-    },
-    {
+     {
       title: "Избранное",
       link: "Selected",
       id: 4,
@@ -35,7 +30,7 @@ function App() {
   const categoryTop250 = useSelector((state) => state.toolkitSlice.top250 );
   const categoryAwaitFilms = useSelector((state) => state.toolkitSlice.awaitFilms );
   const selectedFilms = useSelector((state) => state.toolkitSlice.selectedFilm );
-  console.log(  selectedFilms  );
+  
   
   return (
     <div className="App">

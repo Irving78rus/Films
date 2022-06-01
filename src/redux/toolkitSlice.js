@@ -117,7 +117,7 @@ const toolkitSlice = createSlice({
       
     },
     deleteSelectedFilm(state, film) {
-      console.log(123);
+       
       state.selectedFilm.items=state.selectedFilm.items.filter(item=>item.kinopoiskId !== film.payload.kinopoiskId)
     },
 

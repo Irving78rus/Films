@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCountriesGenres,setQueryFilms,setFilmByFilters } from '../redux/toolkitSlice'
 import { ratingTest, yearTest, keywordTest } from '../utils/validation'
 const Form = ( ) => {
-    const [country, setCountry] = useState('1')
-    const [genre, setGenre] = useState('13')
-    const [typeFilm, setTypeFilm] = useState('FILM')
-    const [minRating, setMinRating] = useState('0')
-    const [maxRating, setMaxRating] = useState('10')
-    const [yearFrom, setYearFrom] = useState('1000')
-    const [yearTo, setYearTo] = useState('3000')
+    const [country, setCountry] = useState('')
+    const [genre, setGenre] = useState('')
+    const [typeFilm, setTypeFilm] = useState('')
+    const [minRating, setMinRating] = useState('')
+    const [maxRating, setMaxRating] = useState('')
+    const [yearFrom, setYearFrom] = useState('')
+    const [yearTo, setYearTo] = useState('')
     const [keyword, setKeyword] = useState('')
     const [FormValid, setFormValid] = useState(true);
     const [error, setError] = useState('error')
