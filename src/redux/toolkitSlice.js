@@ -3,8 +3,8 @@ import {
   getTop250,
   getPremieres,
   getFilmById,
-  getCountriesGenres,
-  getFilmByFilters,
+  
+   
 } from "../api/api";
 import { renameResponse } from "../utils/logic";
 
@@ -27,29 +27,8 @@ export const setFilmById = createAsyncThunk(
     return response;
   }
 );
-export const setCountriesGenres = createAsyncThunk(
-  "toolkit/setCountriesGenres",
-  async () => {
-    const response = await getCountriesGenres();
-    return response;
-  }
-);
-export const setFilmByFilters = createAsyncThunk(
-  "toolkit/setFilmByFilters",
-  async (data, { rejectWithValue }) => {
-      try {
-      const response = await getFilmByFilters(data);
-      if (!response) {
-        throw new Error('Server Error')
-      }
-      return renameResponse(response, response.items, "ratingKinopoisk", "rating")
 
-    } catch (error) {
-      return rejectWithValue(error.message)
-    }
  
-  }
-);
 
 
 const toolkitSlice = createSlice({
@@ -62,20 +41,7 @@ const toolkitSlice = createSlice({
       items: [],
     },
     filmById: {},
-    countriesGenres: {},
-    FilmByFilters: [],
-    isPreloader: false,
-    queryFilms: {
-      countries: '',
-      genres: '',
-      type: '',
-      ratingFrom: '',
-      ratingTo: '',
-      yearFrom:'',
-      yearTo:'',
-      keyword:''
-  },
-    error: null
+     
   },
   reducers: {
     setSelectedFilm(state, film) {
@@ -90,9 +56,7 @@ const toolkitSlice = createSlice({
       );
     },
 
-    setQueryFilms(state, query) {
-      state.queryFilms = query.payload;
-    },
+    
   },
 
 
@@ -111,25 +75,11 @@ const toolkitSlice = createSlice({
       state.isPreloader = false;
       state.filmById = action.payload;
     });
-    builder.addCase(setCountriesGenres.fulfilled, (state, action) => {
-      state.isPreloader = false;
-      state.countriesGenres = action.payload;
-    });
-    builder.addCase(setFilmByFilters.pending, (state, action) => {
-      state.isPreloader = true;
-    });
-    builder.addCase(setFilmByFilters.fulfilled, (state, action) => {
-      state.isPreloader = false;
-      state.FilmByFilters = action.payload;
-      state.error = null;
-    });
-    builder.addCase(setFilmByFilters.rejected, (state, action) => {
-      state.isPreloader = false;
-      state.error = action.payload;
-    });
+   
+     
   },
 });
 
-export const { setSelectedFilm, setQueryFilms, deleteSelectedFilm } =
+export const { setSelectedFilm,  deleteSelectedFilm } =
   toolkitSlice.actions;
 export default toolkitSlice.reducer;

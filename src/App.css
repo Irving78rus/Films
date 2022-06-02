@@ -12,11 +12,13 @@ form{
   display: flex;
   flex-direction: column;
 }
+ 
 input{
   position: relative;
     display: block;
     box-sizing: border-box;
     height: 40px;
+    width:300px;
     padding: 10px 10px 10px 12px;
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 4px;
@@ -240,6 +242,7 @@ background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(15, 15, 15, 0.815) 150%)
  
  .m5{
    margin: 5px;
+   width: 350px;
    
  }
  .paginationItem{

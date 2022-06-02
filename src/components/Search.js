@@ -2,17 +2,17 @@ import '../App.css';
 import Form from './Form';
 import CategoryFilms from './CategoryFilms';
 import { useSelector } from "react-redux";
-import { setFilmByFilters } from '../redux/toolkitSlice'
+import { setFilmByFilters } from '../redux/formSlice'
 import Preloader from './Preloader';
 
 function Search() {
 
-    const FilmByFilters = useSelector((state) => state.toolkitSlice.FilmByFilters);
-    const isLoad = useSelector((state) => state.toolkitSlice.isPreloader);
+    const FilmByFilters = useSelector((state) => state.formSlice.FilmByFilters);
+    const isLoad = useSelector((state) => state.formSlice.isPreloader);
 
     return (
         <div className="wrapper">
-            Search
+      
             <Form  />
             {isLoad && <Preloader />}
             {FilmByFilters && <CategoryFilms setFilms={setFilmByFilters} listFilms={FilmByFilters} />}

@@ -38,7 +38,7 @@ export const getCountriesGenres = () => {
 };
 
 export const getFilmByFilters = (data ) => {
-  console.log(data);
+ 
   return instance
     .get(
       `api/v2.2/films?countries=${data.query.countries}&genres=${data.query.genres}&type=${data.query.type}&ratingFrom=${data.query.ratingFrom}&ratingTo=${data.query.ratingTo}&yearFrom=${data.query.yearFrom}&yearTo=${data.query.yearTo}&keyword=${data.query.keyword}&page=${data.numberPage}`
