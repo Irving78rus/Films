@@ -30,6 +30,7 @@ export const createNumbersForCell = (count) => {
 
 export const renameResponse=(response, responseItems,oldName,newName)=>{
   const arr = [];
+  let myResponse={}
   responseItems.forEach((item ) => {
     let clone = {};
     for (let key in item) {
@@ -42,9 +43,19 @@ export const renameResponse=(response, responseItems,oldName,newName)=>{
     }
     arr.push(clone);
   });
-  const myResponse = {
-    totalPages: response.pagesCount,
-    items: arr
+  if(response.pagesCount){
+    myResponse = {
+      totalPages: response.pagesCount,
+      items: arr
+    }
   }
+  else{
+    myResponse = {
+      totalPages: response.totalPages,
+      items: arr
+    }
+  }
+  
+  console.log(myResponse);
   return myResponse;
  }

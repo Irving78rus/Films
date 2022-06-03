@@ -4,8 +4,9 @@ import {
   setCountriesGenres,
   setQueryFilms,
   setFilmByFilters,
-} from "../redux/formSlice";
-import { ratingTest, yearTest, keywordTest } from "../utils/validation";
+} from "../../redux/formSlice";
+import "./form.css";
+import { ratingTest, yearTest, keywordTest } from "../../utils/validation";
 import { Input, Button, Select } from "@skbkontur/react-ui";
 const Form = () => {
   const typeFilmValue = [
@@ -35,14 +36,20 @@ const Form = () => {
     (state) => state.formSlice.countriesGenres
   );
   const error = useSelector((state) => state.formSlice.error);
-  
+
   const countryValue  = countriesGenres.countries?.map((item) => item.country);
   const countryId  =  countriesGenres.countries?.find((item) => item.country===country);
-  countryId&&setCountry(countryId.id)
-
   const genreValue  = countriesGenres.genres?.map((item) => item.genre);
   const genreId  = countriesGenres.genres?.find((item) => item.genre===genre);
-  genreId&&setGenre(genreId.id)
+  useEffect(() => {
+    countryId&&setCountry(countryId.id)
+  }, [country]);
+  useEffect(() => {
+    genreId&&setGenre(genreId.id)
+  }, [genre]);
+  
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +82,7 @@ const Form = () => {
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)} className="form">
-        <label >
+        
            <div>Страна</div>
            <Select className="m5" items={countryValue} onValueChange={ setCountry } search />    
             {/* <select
@@ -92,8 +99,8 @@ const Form = () => {
                 </option>
               ))}
           </select>   */}
-        </label>
-        <label  >
+        
+       
           <div>Жанр</div>
           <Select className="m5" items={genreValue} onValueChange={setGenre} search />
           {/* <select
@@ -110,8 +117,8 @@ const Form = () => {
                 </option>
               ))}
           </select> */}
-        </label>
-        <label >
+      
+        
           <div> Тип фильма</div>
           <Select className="m5" items={typeFilmValue}   onValueChange={setTypeFilm} search />
           {/* <select
@@ -127,7 +134,7 @@ const Form = () => {
             <option value="MINI_SERIES">Мини сериал</option>
             <option value="ALL">Любой</option>
           </select> */}
-        </label>
+      
 
         <Input
           className="m5"

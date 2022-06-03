@@ -1,8 +1,8 @@
-import "../App.css";
+import "./MoveCard.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedFilm, deleteSelectedFilm } from "../redux/toolkitSlice";
+import { setSelectedFilm, deleteSelectedFilm } from "../../redux/toolkitSlice";
 
 function MoveCard({ listFilms }) {
   const dispatch = useDispatch();
@@ -41,13 +41,13 @@ function MoveCard({ listFilms }) {
             </div>
           </div>
           <div className="filmInfo">
-            <div className="nameRu">{film.nameRu}</div>
-            <div className="nameEn year filmLength">
+            <div >{film.nameRu}</div>
+            <div >
               {film.nameEn} {film.year && film.year + `, `}
               {film.filmLength && film.filmLength + `, `}
             </div>
-            <div className="nameRu">{film.countries[0].country}</div>
-            <div className="nameRu">
+            <div >{film.countries[0].country}</div>
+            <div  >
               {film.genres.map((genre, index) => (
                 <span key={index}>{genre.genre + ` `}</span>
               ))}

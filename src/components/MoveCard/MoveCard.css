@@ -1,0 +1,70 @@
+.posterUrlPreview {
+    position: relative;
+
+}
+
+.posterUrlPreview img {
+    width: 120px;
+    height: 180px
+}
+
+.rating {
+    font-weight: 900;
+    font-size: 24px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    color: red;
+
+}
+
+.ratingOnCard {
+    background-color: #3bb33b;
+    display: inline-block;
+    width: 35px;
+    position: absolute;
+    top: 0;
+    left: -15%;
+    color: white;
+    font-weight: 600;
+}
+
+.ratingVoteCount {
+    font-weight: 400;
+    font-size: 12px;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    color: #777;
+}
+
+.filmInfo {
+    width: 300px;
+}
+
+.ratingInfo {
+    width: 300px;
+
+}
+
+.filmList {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 13px;
+    width: 80vw;
+}
+
+.bc {
+    background-color: rgba(255, 17, 0, 0.089);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 13px;
+    width: 80vw;
+}
+
+.filmList:hover {
+    background-color: #f2f2f2;
+    border-radius: 13px;
+}

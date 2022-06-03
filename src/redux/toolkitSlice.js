@@ -10,6 +10,7 @@ import { renameResponse } from "../utils/logic";
 
 export const setTop250 = createAsyncThunk("toolkit/setTop250", async (data) => {
   const response = await getTop250(data);
+  console.log(response);
   return renameResponse(response, response.films, "filmId", "kinopoiskId");
 });
 export const setPremieres = createAsyncThunk(

@@ -1,5 +1,5 @@
 import '../App.css';
-import Form from './Form';
+import Form from './form/Form';
 import CategoryFilms from './CategoryFilms';
 import { useSelector } from "react-redux";
 import { setFilmByFilters } from '../redux/formSlice'

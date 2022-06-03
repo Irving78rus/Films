@@ -1,0 +1,20 @@
+.paginationItem {
+    width: 40px;
+    height: 40px;
+    background-color: grey;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.paginationItem:hover {
+    background-color: rgba(128, 128, 128, 0.548);
+}
+
+.paginationItem_active {
+    cursor: pointer;
+    background-color: #a0a0a0
+}
+
+.paginationWrapper {
+    display: flex;
+}

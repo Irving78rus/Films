@@ -1,9 +1,9 @@
 import "./App.css";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink,Navigate } from "react-router-dom";
 import CategoryFilms from "./components/CategoryFilms";
 import Films from "./components/Films";
 import Search from "./components/Search";
-import InfoAboutFilm from "./components/InfoAboutFilm";
+import InfoAboutFilm from "./components/InfoAboutFilm/InfoAboutFilm";
 import { useSelector } from "react-redux";
 import { setTop250, setPremieres, setFilmById } from './redux/toolkitSlice'
 
@@ -28,7 +28,11 @@ function App() {
   const categoryTop250 = useSelector((state) => state.toolkitSlice.top250);
   const categoryAwaitFilms = useSelector((state) => state.toolkitSlice.awaitFilms);
   const selectedFilms = useSelector((state) => state.toolkitSlice.selectedFilm);
+ 
 
+  
+     
+     
 
   return (
     <div className="App">
@@ -39,7 +43,7 @@ function App() {
           </NavLink>
         ))}
       </div>
-
+      <Navigate to="Films" />
       <Routes>
         <Route path="Films" element={<Films />} />
         <Route path="Search" element={<Search />} />

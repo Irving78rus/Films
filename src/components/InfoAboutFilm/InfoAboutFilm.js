@@ -1,8 +1,8 @@
-import "../App.css";
+import "./InfoAboutFilm.css";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilmById, setSelectedFilm } from "../redux/toolkitSlice";
+import { setFilmById, setSelectedFilm } from "../../redux/toolkitSlice";
 function InfoAboutFilm() {
   const { id } = useParams();
   const dispatch = useDispatch();
