@@ -3,16 +3,14 @@ import {
   getTop250,
   getPremieres,
   getFilmById,
-  
-   
-} from "../api/api";
+  } from "../api/api";
 import { renameResponse } from "../utils/logic";
 
 export const setTop250 = createAsyncThunk("toolkit/setTop250", async (data) => {
   const response = await getTop250(data);
-  console.log(response);
   return renameResponse(response, response.films, "filmId", "kinopoiskId");
 });
+
 export const setPremieres = createAsyncThunk(
   "toolkit/setPremieres",
   async (data) => {
@@ -28,8 +26,6 @@ export const setFilmById = createAsyncThunk(
     return response;
   }
 );
-
- 
 
 
 const toolkitSlice = createSlice({
@@ -56,14 +52,10 @@ const toolkitSlice = createSlice({
         (item) => item.kinopoiskId !== film.payload.kinopoiskId
       );
     },
-
-    
   },
 
-
-
   extraReducers: (builder) => {
-    //Не нравится мне это, очень код однообразный
+ 
     builder.addCase(setTop250.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.top250 = action.payload;
@@ -76,9 +68,7 @@ const toolkitSlice = createSlice({
       state.isPreloader = false;
       state.filmById = action.payload;
     });
-   
-     
-  },
+     },
 });
 
 export const { setSelectedFilm,  deleteSelectedFilm } =

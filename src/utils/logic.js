@@ -55,7 +55,6 @@ export const renameResponse=(response, responseItems,oldName,newName)=>{
       items: arr
     }
   }
-  
-  console.log(myResponse);
+ 
   return myResponse;
  }

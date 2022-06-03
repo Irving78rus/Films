@@ -6,10 +6,9 @@ import {
 import { renameResponse } from "../utils/logic";
 
 export const setCountriesGenres = createAsyncThunk(
- 
+
   "toolkit/setCountriesGenres",
   async () => {
-    console.log(1) 
     const response = await getCountriesGenres();
     return response;
   }
@@ -17,20 +16,17 @@ export const setCountriesGenres = createAsyncThunk(
 export const setFilmByFilters = createAsyncThunk(
   "toolkit/setFilmByFilters",
   async (data, { rejectWithValue }) => {
-      try {
-       
+    try {
       const response = await getFilmByFilters(data);
-      console.log(response);
       if (!response) {
         throw new Error('Server Error')
       }
       return renameResponse(response, response.items, "ratingKinopoisk", "rating")
 
     } catch (error) {
-      console.log(error) 
       return rejectWithValue(error.message)
     }
- 
+
   }
 );
 
@@ -38,7 +34,7 @@ export const setFilmByFilters = createAsyncThunk(
 const formSlice = createSlice({
   name: "formSlice",
   initialState: {
-    
+
     countriesGenres: {},
     FilmByFilters: [],
     isPreloader: false,
@@ -48,14 +44,14 @@ const formSlice = createSlice({
       type: '',
       ratingFrom: '',
       ratingTo: '',
-      yearFrom:'',
-      yearTo:'',
-      keyword:''
-  },
+      yearFrom: '',
+      yearTo: '',
+      keyword: ''
+    },
     error: null
   },
   reducers: {
-     
+
     setQueryFilms(state, query) {
       state.queryFilms = query.payload;
     },
@@ -81,9 +77,9 @@ const formSlice = createSlice({
       state.isPreloader = false;
       state.error = action.payload;
     });
-    
+
   },
 });
 
-export const { setQueryFilms } =formSlice.actions;
+export const { setQueryFilms } = formSlice.actions;
 export default formSlice.reducer;
