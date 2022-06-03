@@ -48,9 +48,6 @@ const Form = () => {
     genreId&&setGenre(genreId.id)
   }, [genre]);
   
-
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
     

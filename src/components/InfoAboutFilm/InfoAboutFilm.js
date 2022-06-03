@@ -28,9 +28,6 @@ function InfoAboutFilm() {
             </div>
             <div className="InfoAboutFilmCenter">
               {/* {копипаста!!!!} */}
-              {/* {копипаста!!!!} */}
-              {/* {копипаста!!!!} */}
-              {/* {копипаста!!!!} */}
               <div className="InfoAboutFilmCenterNameRu">
                 {" "}
                 {filmById.nameRu} ({filmById.year})
