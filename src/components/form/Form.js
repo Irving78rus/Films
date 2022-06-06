@@ -17,7 +17,7 @@ const Form = () => {
     "MINI_SERIES",
     "ALL",
   ];
- 
+
   const [country, setCountry] = useState("1");
   const [genre, setGenre] = useState("13");
   const [typeFilm, setTypeFilm] = useState("");
@@ -37,20 +37,20 @@ const Form = () => {
   );
   const error = useSelector((state) => state.formSlice.error);
 
-  const countryValue  = countriesGenres.countries?.map((item) => item.country);
-  const countryId  =  countriesGenres.countries?.find((item) => item.country===country);
-  const genreValue  = countriesGenres.genres?.map((item) => item.genre);
-  const genreId  = countriesGenres.genres?.find((item) => item.genre===genre);
+  const countryValue = countriesGenres.countries?.map((item) => item.country);
+  const countryId = countriesGenres.countries?.find((item) => item.country === country);
+  const genreValue = countriesGenres.genres?.map((item) => item.genre);
+  const genreId = countriesGenres.genres?.find((item) => item.genre === genre);
   useEffect(() => {
-    countryId&&setCountry(countryId.id)
+    countryId && setCountry(countryId.id)
   }, [country]);
   useEffect(() => {
-    genreId&&setGenre(genreId.id)
+    genreId && setGenre(genreId.id)
   }, [genre]);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const query = {
       countries: country,
       genres: genre,
@@ -79,60 +79,17 @@ const Form = () => {
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)} className="form">
-        
-           <div>Страна</div>
-           <Select className="m5" items={countryValue} onValueChange={ setCountry } search />    
-            {/* <select
-            value={country}
-            onChange={(e) => {
-              setCountry(e.target.value);
-            }}
-          >
-            <option value=""></option>
-            {countriesGenres.countries &&
-              countriesGenres.countries.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.country}
-                </option>
-              ))}
-          </select>   */}
-        
-       
-          <div>Жанр</div>
-          <Select className="m5" items={genreValue} onValueChange={setGenre} search />
-          {/* <select
-            value={genre}
-            onChange={(e) => {
-              setGenre(e.target.value);
-            }}
-          >
-            <option value=""></option>
-            {countriesGenres.genres &&
-              countriesGenres.genres.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.genre}
-                </option>
-              ))}
-          </select> */}
-      
-        
-          <div> Тип фильма</div>
-          <Select className="m5" items={typeFilmValue}   onValueChange={setTypeFilm} search />
-          {/* <select
-            value={typeFilm}
-            onChange={(e) => {
-              setTypeFilm(e.target.value);
-            }}
-          >
-            <option value=""></option>
-            <option value="FILM">Фильм</option>
-            <option value="TV_SHOW">ТВ Шоу</option>
-            <option value="TV_SERIES">Сериал</option>
-            <option value="MINI_SERIES">Мини сериал</option>
-            <option value="ALL">Любой</option>
-          </select> */}
-      
 
+        <div>Страна</div>
+        {console.log(countryValue)}
+        <Select className="m5" items={countryValue} onValueChange={setCountry} search />
+       
+        <div>Жанр</div>
+        <Select className="m5" items={genreValue} onValueChange={setGenre} search />
+      
+        <div> Тип фильма</div>
+        <Select className="m5" items={typeFilmValue} onValueChange={setTypeFilm} search />
+      
         <Input
           className="m5"
           placeholder="мин рейтинг:0"
@@ -180,13 +137,13 @@ const Form = () => {
         <input className='m5' type="text" placeholder="мин год:1000" value={yearFrom} onChange={(e) => { setYearFrom(e.target.value) }} />
         <input className='m5' type="text" placeholder="макс год:3000" value={yearTo} onChange={(e) => { setYearTo(e.target.value) }} />
         <input className='m5' type="text" placeholder="Ключевое слово" value={keyword} onChange={(e) => { setKeyword(e.target.value) }} /> */}
-                
+
         <button className='m5' type="">Поиск</button>
         {/* <Button className='m5' >Поиск</Button> */}
         {!FormValid && "Не валидная форма"}
       </form>
       {error && <h1>{error}</h1>}
-      
+
     </>
   );
 };
