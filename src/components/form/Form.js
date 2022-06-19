@@ -4,6 +4,7 @@ import {
   setCountriesGenres,
   setQueryFilms,
   setFilmByFilters,
+  errorNull
 } from "../../redux/formSlice";
 import "./form.css";
 import { ratingTest, yearTest, keywordTest } from "../../utils/validation";
@@ -35,8 +36,10 @@ const Form = () => {
   const countriesGenres = useSelector(
     (state) => state.formSlice.countriesGenres
   );
-  const error = useSelector((state) => state.formSlice.error);
 
+  const error = useSelector((state) => state.formSlice.error);
+  error&&dispatch(errorNull());
+  
   const countryValue = countriesGenres.countries?.map((item) => item.country);
   const countryId = countriesGenres.countries?.find((item) => item.country === country);
   const genreValue = countriesGenres.genres?.map((item) => item.genre);

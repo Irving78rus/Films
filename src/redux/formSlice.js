@@ -21,7 +21,7 @@ export const setFilmByFilters = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await getFilmByFilters(data);
-      console.log(response);
+     
       if (!response) {
         throw new Error("Server Error");
       }
@@ -59,16 +59,21 @@ const formSlice = createSlice({
     setQueryFilms(state, query) {
       state.queryFilms = query.payload;
     },
+    errorNull(state ){
+      state.error = null;
+  }
   },
 
   extraReducers: (builder) => {
     //Не нравится мне это, очень код однообразный
     builder.addCase(setCountriesGenres.pending, (state, action) => {
       state.isPreloader = true;
+     
     });
     builder.addCase(setCountriesGenres.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.countriesGenres = action.payload;
+    
     });
     builder.addCase(setCountriesGenres.rejected, (state, action) => {
       state.isPreloader = false;
@@ -76,11 +81,12 @@ const formSlice = createSlice({
     });
     builder.addCase(setFilmByFilters.pending, (state, action) => {
       state.isPreloader = true;
+      
     });
     builder.addCase(setFilmByFilters.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.FilmByFilters = action.payload;
-      state.error = null;
+     
     });
     builder.addCase(setFilmByFilters.rejected, (state, action) => {
       state.isPreloader = false;
@@ -89,5 +95,5 @@ const formSlice = createSlice({
   },
 });
 
-export const { setQueryFilms } = formSlice.actions;
+export const { setQueryFilms,errorNull } = formSlice.actions;
 export default formSlice.reducer;

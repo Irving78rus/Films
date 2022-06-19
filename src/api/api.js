@@ -16,7 +16,7 @@ const instance = axios.create({
 
 export const getTop250 = async (data) => {
   const response = await instance.get(
-    `api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${data.numberPage}`
+    `api/v2.2/films/top?type=TOP_250d_BEST_FILMS&page=${data.numberPage}`
   );
 
   return response.data;

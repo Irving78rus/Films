@@ -78,15 +78,20 @@ const toolkitSlice = createSlice({
         (item) => item.kinopoiskId !== film.payload.kinopoiskId
       );
     },
+    errorNull(state ){
+        state.error = null;
+    }
   },
 
   extraReducers: (builder) => {
     builder.addCase(setTop250.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.top250 = action.payload;
+      
     });
     builder.addCase(setTop250.pending, (state, action) => {
       state.isPreloader = true;
+       
     });
     builder.addCase(setTop250.rejected, (state, action) => {
       state.isPreloader = false;
@@ -96,9 +101,11 @@ const toolkitSlice = createSlice({
     builder.addCase(setPremieres.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.awaitFilms = action.payload;
+      
     });
     builder.addCase(setPremieres.pending, (state, action) => {
       state.isPreloader = true;
+       
     });
     builder.addCase(setPremieres.rejected, (state, action) => {
       state.isPreloader = false;
@@ -108,9 +115,11 @@ const toolkitSlice = createSlice({
     builder.addCase(setFilmById.fulfilled, (state, action) => {
       state.isPreloader = false;
       state.filmById = action.payload;
+      
     });
     builder.addCase(setFilmById.pending, (state, action) => {
       state.isPreloader = true;
+      
     });
     builder.addCase(setFilmById.rejected, (state, action) => {
       state.isPreloader = false;
@@ -119,5 +128,5 @@ const toolkitSlice = createSlice({
   },
 });
 
-export const { setSelectedFilm, deleteSelectedFilm } = toolkitSlice.actions;
+export const { setSelectedFilm, deleteSelectedFilm,errorNull } = toolkitSlice.actions;
 export default toolkitSlice.reducer;

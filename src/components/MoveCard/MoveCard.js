@@ -2,7 +2,8 @@ import "./MoveCard.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedFilm, deleteSelectedFilm } from "../../redux/toolkitSlice";
+import { setSelectedFilm, deleteSelectedFilm,errorNull } from "../../redux/toolkitSlice";
+import { Button, Toast } from '@skbkontur/react-ui';
 
 function MoveCard({ listFilms }) {
   const dispatch = useDispatch();
@@ -18,9 +19,11 @@ function MoveCard({ listFilms }) {
     dispatch(deleteSelectedFilm(film));
   };
   const error = useSelector((state) => state.toolkitSlice.error);
+  error&&dispatch(errorNull());
+  console.log(error,listFilms);
   return (
     <div className="wrapper">
-      {error && <h1>{error}</h1>}
+      {error &&  Toast.push(`${error}`)}
       {listFilms.items?.map((film, index) => (
         <NavLink
           to={`/Films/${film.kinopoiskId}`}
