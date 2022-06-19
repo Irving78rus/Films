@@ -81,7 +81,7 @@ const Form = () => {
       <form onSubmit={(e) => handleSubmit(e)} className="form">
 
         <div>Страна</div>
-        {console.log(countryValue)}
+   
         <Select className="m5" items={countryValue} onValueChange={setCountry} search />
        
         <div>Жанр</div>

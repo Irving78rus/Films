@@ -17,9 +17,10 @@ function MoveCard({ listFilms }) {
     e.preventDefault();
     dispatch(deleteSelectedFilm(film));
   };
-
+  const error = useSelector((state) => state.toolkitSlice.error);
   return (
     <div className="wrapper">
+      {error && <h1>{error}</h1>}
       {listFilms.items?.map((film, index) => (
         <NavLink
           to={`/Films/${film.kinopoiskId}`}
