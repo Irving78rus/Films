@@ -1,26 +1,19 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
-import {
-  getCountriesGenres,
-  getFilmByFilters,
-} from "../api/api";
+import { getCountriesGenres, getFilmByFilters } from "../api/api";
 import { renameResponse } from "../utils/logic";
 
 export const setCountriesGenres = createAsyncThunk(
-
   "toolkit/setCountriesGenres",
-  async ( { rejectWithValue }) => {
+  async ({ rejectWithValue }) => {
     try {
       const response = await getCountriesGenres();
       if (!response) {
-        throw new Error('Server Error')
+        throw new Error("Server Error");
       }
       return response;
-
-    } 
-    catch (error) {
-      return rejectWithValue(error.message)
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-    
   }
 );
 export const setFilmByFilters = createAsyncThunk(
@@ -30,45 +23,43 @@ export const setFilmByFilters = createAsyncThunk(
       const response = await getFilmByFilters(data);
       console.log(response);
       if (!response) {
-        throw new Error('Server Error')
+        throw new Error("Server Error");
       }
-      return renameResponse(response.data, response.data.items, "ratingKinopoisk", "rating")
-
+      return renameResponse(
+        response.data,
+        response.data.items,
+        "ratingKinopoisk",
+        "rating"
+      );
     } catch (error) {
-      return rejectWithValue(error.message)
+      return rejectWithValue(error.message);
     }
-
   }
 );
-
 
 const formSlice = createSlice({
   name: "formSlice",
   initialState: {
-
     countriesGenres: {},
     FilmByFilters: [],
     isPreloader: false,
     queryFilms: {
-      countries: '',
-      genres: '',
-      type: '',
-      ratingFrom: '',
-      ratingTo: '',
-      yearFrom: '',
-      yearTo: '',
-      keyword: ''
+      countries: "",
+      genres: "",
+      type: "",
+      ratingFrom: "",
+      ratingTo: "",
+      yearFrom: "",
+      yearTo: "",
+      keyword: "",
     },
-    error: null
+    error: null,
   },
   reducers: {
-
     setQueryFilms(state, query) {
       state.queryFilms = query.payload;
     },
   },
-
-
 
   extraReducers: (builder) => {
     //Не нравится мне это, очень код однообразный
@@ -95,7 +86,6 @@ const formSlice = createSlice({
       state.isPreloader = false;
       state.error = action.payload;
     });
-
   },
 });
 
