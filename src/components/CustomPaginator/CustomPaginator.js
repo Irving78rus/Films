@@ -29,9 +29,9 @@ function CustomPaginator({ listFilms, setFilms }) {
   }, [listFilms]);
 
   return (
-    <div className="wrapper">
+    <div className="pagination wrapper">
       {listFilms.totalPages && (
-        <div className="paginationWrapper">
+        <div className="pagination_wrapper">
           {portionNumber > 1 && (
             <button
               onClick={() => {
@@ -57,8 +57,8 @@ function CustomPaginator({ listFilms, setFilms }) {
                   key={index}
                   className={
                     item === currentPage
-                      ? "paginationItem paginationItem_active"
-                      : "paginationItem"
+                      ? "pagination__item pagination__item_active"
+                      : "pagination__item"
                   }
                   onClick={() => getFilmsByPagesCount(item)}
                 >

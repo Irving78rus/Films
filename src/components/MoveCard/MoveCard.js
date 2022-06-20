@@ -20,21 +20,21 @@ function MoveCard({ listFilms }) {
   };
   const error = useSelector((state) => state.toolkitSlice.error);
   error&&dispatch(errorNull());
-  console.log(error,listFilms);
+  
   return (
-    <div className="wrapper">
+    <div className="list-films wrapper">
       {error &&  Toast.push(`${error}`)}
       {listFilms.items?.map((film, index) => (
         <NavLink
           to={`/Films/${film.kinopoiskId}`}
           key={index}
-          className={index === 0 ? " bc" : "filmList"}
+          className={index === 0 ? "first-film-item" : "film-item"}
         >
           <div> {index + 1}</div>
-          <div className="posterUrlPreview">
+          <div className="list-films__poster-url-preview">
             <img src={film.posterUrlPreview} alt="" />
             <div
-              className="ratingOnCard"
+              className="list-films__rating-on-card"
               style={
                 film.rating && film.rating < 6
                   ? { backgroundColor: "red" }
@@ -44,7 +44,7 @@ function MoveCard({ listFilms }) {
               {film.rating}
             </div>
           </div>
-          <div className="filmInfo">
+          <div className="list-films__film-info">
             <div >{film.nameRu}</div>
             <div >
               {film.nameEn} {film.year && film.year + `, `}
@@ -57,16 +57,16 @@ function MoveCard({ listFilms }) {
               ))}
             </div>
           </div>
-          <div className="ratingInfo">
+          <div className="list-films__rating-info">
             <div
-              className="rating"
+              className="list-films__rating"
               style={
                 film.rating && film.rating > 6 ? { color: "#3bb33b" } : null
               }
             >
               {film.rating}
             </div>
-            <div className="ratingVoteCount">{film.ratingVoteCount}</div>
+            <div className="list-films__rating-vote-count">{film.ratingVoteCount}</div>
           </div>
           <div>
             <button

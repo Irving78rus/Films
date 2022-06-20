@@ -64,6 +64,7 @@ function App() {
           <CategoryFilms setFilms={setPremieres} listFilms={categoryAwaitFilms} />} />
 
         <Route path="Films/:id" element={<InfoAboutFilm />} />
+        <Route  path="*" element={<h1>404 Page not found</h1>} />
       </Routes>
     </div>
   );
