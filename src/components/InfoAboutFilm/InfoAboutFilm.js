@@ -2,14 +2,14 @@ import "./InfoAboutFilm.css";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilmById, setSelectedFilm } from "../../redux/toolkitSlice";
+import { setFilmById, setSelectedFilm } from "../../redux/filmContentSlice";
 function InfoAboutFilm() {
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setFilmById(id));
   }, []);
-  const filmById = useSelector((state) => state.toolkitSlice.filmById);
+  const filmById = useSelector((state) => state.filmContentSlice.filmById);
 
   const addSelectedFilm = () => {
     dispatch(setSelectedFilm(filmById));

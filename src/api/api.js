@@ -6,13 +6,6 @@ const instance = axios.create({
   },
   baseURL: "https://kinopoiskapiunofficial.tech/",
 });
-// export const setPremieres = createAsyncThunk(
-//   "toolkit/setPremieres",
-//   async (data) => {
-//       const response = await getPremieres(data);
-//       return response;
-//   }
-// );
 
 export const getTop250 = async (data) => {
   const response = await instance.get(

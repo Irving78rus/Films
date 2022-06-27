@@ -1,8 +1,8 @@
-import toolkitSlice from "./toolkitSlice";
+import filmContentSlice from "./filmContentSlice";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import formSlice from "./formSlice";
 const rootReducer = combineReducers({
-  toolkitSlice,
+  filmContentSlice,
   formSlice
 });
 

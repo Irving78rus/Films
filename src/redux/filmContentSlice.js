@@ -50,8 +50,8 @@ export const setFilmById = createAsyncThunk(
   }
 );
 
-const toolkitSlice = createSlice({
-  name: "toolkit",
+const filmContentSlice = createSlice({
+  name: "filmContentSlice",
   initialState: {
     isPreloader: false,
     top250: {},
@@ -128,5 +128,5 @@ const toolkitSlice = createSlice({
   },
 });
 
-export const { setSelectedFilm, deleteSelectedFilm,errorNull } = toolkitSlice.actions;
-export default toolkitSlice.reducer;
+export const { setSelectedFilm, deleteSelectedFilm,errorNull } = filmContentSlice.actions;
+export default filmContentSlice.reducer;

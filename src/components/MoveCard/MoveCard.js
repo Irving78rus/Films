@@ -2,13 +2,13 @@ import "./MoveCard.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedFilm, deleteSelectedFilm,errorNull } from "../../redux/toolkitSlice";
+import { setSelectedFilm, deleteSelectedFilm,errorNull } from "../../redux/filmContentSlice";
 import { Button, Toast } from '@skbkontur/react-ui';
 
 function MoveCard({ listFilms }) {
   const dispatch = useDispatch();
   const selectedFilms = useSelector(
-    (state) => state.toolkitSlice.selectedFilm.items
+    (state) => state.filmContentSlice.selectedFilm.items
   );
   const addSelectedFilm = (e, film) => {
     dispatch(setSelectedFilm(film));
@@ -18,7 +18,7 @@ function MoveCard({ listFilms }) {
     e.preventDefault();
     dispatch(deleteSelectedFilm(film));
   };
-  const error = useSelector((state) => state.toolkitSlice.error);
+  const error = useSelector((state) => state.filmContentSlice.error);
   error&&dispatch(errorNull());
   
   return (
