@@ -1,7 +1,7 @@
 
  # https://irving78rus.github.io/Films 
  
-#SPA на React (хуки). Поиск по Кинопоиск-API. 
+##SPA на React (хуки). Поиск по Кинопоиск-API. 
 ### Учебный проект.
 
 ___
