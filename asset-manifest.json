@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/films/static/css/main.8b535dd7.css",
+    "main.js": "/films/static/js/main.26fed478.js",
+    "static/media/awaitFilms.png": "/films/static/media/awaitFilms.221cf89a91a017bcde6c.png",
+    "static/media/top250.png": "/films/static/media/top250.806a34eec036900c943f.png",
+    "static/media/1494.gif": "/films/static/media/1494.c3f9794ff1a34caa0fea.gif",
+    "index.html": "/films/index.html",
+    "main.8b535dd7.css.map": "/films/static/css/main.8b535dd7.css.map",
+    "main.26fed478.js.map": "/films/static/js/main.26fed478.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b535dd7.css",
+    "static/js/main.26fed478.js"
+  ]
+}
