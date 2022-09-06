@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.App {
+  text-align: center;
+}
+
+
+button {
+  padding: 5px;
+  z-index: 3;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 32px;
+  padding: 8px 16px;
+  font-family: Graphik Kinopoisk LC Web, Tahoma, Arial, Verdana, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 4%);
+  transition: trasnform .2s ease, background-color .2s ease
+}
+
+button:hover {
+  background-color: rgba(136, 136, 136, 0.486);
+}
+
+.header {
+  background-color: rgb(53, 52, 52);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.header-link {
+  margin: 15px;
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.header-link:hover {
+  color: rgba(240, 248, 255, 0.514);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  width: 30vw;
+  height: 100vh;
+  background-color: rgb(148, 89, 89);
+}
+
+.mainCard {
+  width: 80%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+
+.mainCard:hover {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+
+}
+
+.mainCard img {
+  justify-content: start;
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  margin: 0 15px;
+}
+
+
+.m5 {
+  margin: 5px;
+  width: 350px;
+
+}
